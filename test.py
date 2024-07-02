@@ -1,7 +1,7 @@
 from model.model import Model
 
 myModel = Model()
-myModel._crea_grafo("QPL", 2010)
+myModel._crea_grafo("QPL", 7)
 print(myModel.get_dettagli_grafo())
 """path, distanza = myModel._handle_percorso()
 print("Distanza: ", distanza)

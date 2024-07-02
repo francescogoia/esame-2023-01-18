@@ -1,5 +1,5 @@
 from database.DB_connect import DBConnect
-from model.state import State
+from model.location import Location
 
 
 class DAO():
@@ -21,18 +21,19 @@ class DAO():
         return result
 
     @staticmethod
-    def getAllNodes(provider):
+    def getAllLocation(provider):
         conn = DBConnect.get_connection()
         cursor = conn.cursor(dictionary=True)
         query = """
-            select distinct Location 
+            select Location, avg(Latitude) as Latitude , avg(Longitude) as Longitude 
             from nyc_wifi_hotspot_locations nwhl 
             where Provider = %s
+            group by Location
         """
         cursor.execute(query, (provider, ))
         result = []
         for row in cursor:
-            result.append(row["Location"])
+            result.append(Location(**row))
         cursor.close()
         conn.close()
         return result
