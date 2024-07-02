@@ -37,8 +37,9 @@ class View(ft.UserControl):
         self._page.controls.append(self.txt_result1)
 
         self._txtIn_stringa = ft.TextField(label="Stringa", disabled=True)
+        self._DD_target = ft.Dropdown(label="Target", disabled=True)
         self._btn_percorso = ft.ElevatedButton(text="Cerca percorso", on_click=self._controller.handlePercorso, disabled=True)
-        row2 = ft.Row([ft.Container(self._txtIn_stringa, width=300), ft.Container(self._btn_percorso, width=150)], alignment=ft.MainAxisAlignment.CENTER)
+        row2 = ft.Row([ft.Container(self._txtIn_stringa, width=300), ft.Container(self._DD_target, width=300), ft.Container(self._btn_percorso, width=300)], alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row2)
 
         # List View where the reply is printed
